@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: rewrite_path_route
+          uri: https://blog.csdn.net
+          predicates:
+              - Path=/foo/**
+          filters:
+              - RewritePath=/foo/(?<segment>.*), /$\{segment}
